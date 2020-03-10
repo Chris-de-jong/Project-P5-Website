@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chart test</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.setOnLoadCallback(drawCurveTypes);
+
+      function drawCurveTypes() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Dogs');
+            data.addColumn('number', 'Cats');
+
+            data.addRows([
+              [0, 0, 100],    [1, 100, 0],   [2, 0, 100],  [3, 100, 0],   [4, 0, 100],  [5, 100, 0],
+              [6, 0, 100],   [7, 100, 0],  [8, 0, 100],  [9, 100, 0],  [10, 0 , 100]
+            ]);
+
+
+            var options = {
+              hAxis: {
+                title: 'Time'
+              },
+              vAxis: {
+                title: 'Popularity'
+              },
+              series: {
+                1: {curveType: 'function'}
+              }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+    </script>
+
+  </head>
+  <body>
+     <div id="chart_div"></div>
+  </body>
+</html>
